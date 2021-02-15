@@ -21,7 +21,23 @@ body{
     left: 50vw;
     margin: -20px 0 0 -20px;
     border-radius: 100%;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
 }
+
+#gameOver{
+    color:white;
+    background-color: red;
+    border-radius:40px;
+    width:400px;
+    height:220px;
+    font-size:40px;
+    position:absolute;
+    top: 40vh;
+    left: 35vw;
+    padding:10px;
+}
+
 #score{
     position:absolute;
     top:10px;
@@ -46,4 +62,70 @@ body{
     background: #000 url('assets/stars.png') repeat top center;
 }
 
+.bounce {
+    animation-name: bounce-1;
+    animation-timing-function: linear;
+}
+@keyframes bounce-1 {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
 
+/* Reset button styles */
+.push_button {
+	position: relative;
+	width:220px;
+	height:40px;
+	text-align:center;
+	color:#FFF;
+	text-decoration:none;
+	line-height:43px;
+	font-family:'Oswald', Helvetica;
+	display: block;
+	margin: 25px;
+    margin-left:75px;
+}
+.push_button:before {
+	background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#D0D0D0), to(#f0f0f0));
+	
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	
+	-webkit-box-shadow:0 1px 2px rgba(0, 0, 0, .5) inset, 0 1px 0 #FFF; 
+	-moz-box-shadow:0 1px 2px rgba(0, 0, 0, .5) inset, 0 1px 0 #FFF; 
+	box-shadow:0 1px 2px rgba(0, 0, 0, .5) inset, 0 1px 0 #FFF;
+	
+	position: absolute;
+	content: "";
+}
+
+.push_button:active:before{
+	top: -11px;
+	bottom: -5px;
+	content: "";
+}
+.blue {
+	text-shadow:-1px -1px 0 #2C7982;
+	background: #3EACBA;
+	border:1px solid #379AA4;
+	background-image:-webkit-linear-gradient(top, #48C6D4, #3EACBA);
+	background-image:-moz-linear-gradient(top, #48C6D4, #3EACBA);
+	background-image:-ms-linear-gradient(top, #48C6D4, #3EACBA);
+	background-image:-o-linear-gradient(top, #48C6D4, #3EACBA);
+	background-image:linear-gradient(top, #48C6D4, #3EACBA);
+	
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	}
+
+.blue:hover {
+	background: #48C6D4;
+	background-image:-webkit-linear-gradient(top, #3EACBA, #48C6D4);
+	background-image:-moz-linear-gradient(top, #3EACBA, #48C6D4);
+	background-image:-ms-linear-gradient(top, #3EACBA, #48C6D4);
+	background-image:-o-linear-gradient(top, #3EACBA, #48C6D4);
+	background-image:linear-gradient(top, #3EACBA, #48C6D4);
+}
