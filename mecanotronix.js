@@ -50,17 +50,8 @@ function onWordHits(word) {
     //animations need time to stop
     setTimeout(function () {
         document.getElementById("gameOver").style.display ="block"
-        document.getElementById("gameOver").innerText= `Has perdido...`+`\n`+ `Puntuación: ${score}`+`\n`+`¿Volver a empezar?`+`\n`
-        var resetBtn = document.createElement("button")
-        resetBtn.id = "resetBtn"
-        resetBtn.textContent ="Reset"
-        resetBtn.className = "push_button blue"
-        document.getElementById("gameOver").appendChild(resetBtn)
-
-        document.getElementById("resetBtn").addEventListener("click", function(){
-            location.reload();
-        })
-
+        document.getElementById("resetBtn").style.display ="block"
+        document.getElementById("gameOverText").innerText= `Has perdido...`+`\n`+ `Puntuación: ${score}`+`\n`+`¿Volver a empezar?`+`\n`
     }, 10);
 
 
