@@ -25,7 +25,7 @@ document.getElementById("hard").addEventListener("click", function () {
 
 
 //word database
-const wordList = ['clase', 'primaria', 'lestonnac', 'lleida', 'estudiar', 'maestro', 'alumno', 'ordenador', 'recursostic', 'robotica'];
+const wordList = ['clase', 'día','josé','júlio'];
 
 const words = [];
 let score = 0;
@@ -48,7 +48,7 @@ for (let i = 0; i < maxWordCount; i++) {
     }, 1000 * i);
 }
 
-document.addEventListener("keyup", heroAttack);
+document.addEventListener("keydown", heroAttack);
 
 function randomWord() {
     return wordList[helper.random(0, wordList.length)];
@@ -79,7 +79,7 @@ function onWordHits(word) {
 }
 
 function heroAttack(e) {
-    const letter = String.fromCharCode(e.keyCode).toLowerCase();
+    const letter = e.key.toLowerCase()
 
     if (activeWordIndex === null) {
         for (let i = 0; i < words.length; i++) {
