@@ -1,7 +1,28 @@
 import Word from './word.js';
 import helper from './helper.js';
 
-const maxWordCount = 3; //maximum word count attacking
+//Set difficulty. First time it won't show anything until you choose the difficulty button
+var level = localStorage.getItem("maxWords")
+if (level == null) {
+    level = localStorage.setItem("maxWords", 3)
+}
+
+const maxWordCount = level; //maximum word count attacking
+
+//Menu Selector
+document.getElementById("easy").addEventListener("click", function () {
+    level = localStorage.setItem("maxWords", 3)
+    location.reload();
+});
+document.getElementById("normal").addEventListener("click", function () {
+    level = localStorage.setItem("maxWords", 5)
+    location.reload();
+});
+document.getElementById("hard").addEventListener("click", function () {
+    level = localStorage.setItem("maxWords", 7)
+    location.reload();
+});
+
 
 //word database
 const wordList = ['clase', 'primaria', 'lestonnac', 'lleida', 'estudiar', 'maestro', 'alumno', 'ordenador', 'recursostic', 'robotica'];
@@ -30,7 +51,7 @@ for (let i = 0; i < maxWordCount; i++) {
 document.addEventListener("keyup", heroAttack);
 
 function randomWord() {
-    return wordList[ helper.random(0, wordList.length) ];
+    return wordList[helper.random(0, wordList.length)];
 }
 
 //called when a word dies
@@ -49,9 +70,9 @@ function onWordHits(word) {
 
     //animations need time to stop
     setTimeout(function () {
-        document.getElementById("gameOver").style.display ="block"
-        document.getElementById("resetBtn").style.display ="block"
-        document.getElementById("gameOverText").innerText= `Has perdido...`+`\n`+ `Puntuación: ${score}`+`\n`+`¿Volver a empezar?`+`\n`
+        document.getElementById("gameOver").style.display = "block"
+        document.getElementById("resetBtn").style.display = "block"
+        document.getElementById("gameOverText").innerText = `Has perdido...` + `\n` + `Puntuación: ${score}` + `\n` + `¿Volver a empezar?` + `\n`
     }, 10);
 
 
@@ -60,9 +81,9 @@ function onWordHits(word) {
 function heroAttack(e) {
     const letter = String.fromCharCode(e.keyCode).toLowerCase();
 
-    if(activeWordIndex === null) {
+    if (activeWordIndex === null) {
         for (let i = 0; i < words.length; i++) {
-            if(words[i].letters[0] === letter) {
+            if (words[i].letters[0] === letter) {
                 incrementScore();
 
                 activeWordIndex = i;
@@ -70,10 +91,10 @@ function heroAttack(e) {
 
                 return;
             }
-            
+
         }
     } else {
-        if(words[activeWordIndex].letters[0] === letter) {
+        if (words[activeWordIndex].letters[0] === letter) {
             incrementScore();
             words[activeWordIndex].damage(letter);
         }
