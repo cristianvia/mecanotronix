@@ -12,8 +12,16 @@
 <body>
     <div class="stars"></div>  
     <div id="ws-wrapper">
+        <div class="menu">
+            <button class="game-button">Fácil</button>
+            <button class="game-button orange">Normal</button>
+            <button class="game-button red">Difícil</button>
+        </div>
         <div class="hero bounce">🛸</div>
-        <div id="gameOver" style="display:none; z-index:3; text-align: center;"></div>
+        <div id="gameOver" style="display:none; z-index:3; text-align: center;">
+        <div id="gameOverText"></div>
+        <button class="game-button green" id="resetBtn" onClick="location.reload();">Reset</button>
+        </div>
         <div id="score"></div>
     </div>
 
