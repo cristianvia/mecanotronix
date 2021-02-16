@@ -15,17 +15,17 @@ document.getElementById("easy").addEventListener("click", function () {
     location.reload();
 });
 document.getElementById("normal").addEventListener("click", function () {
-    level = localStorage.setItem("maxWords", 5)
+    level = localStorage.setItem("maxWords", 4)
     location.reload();
 });
 document.getElementById("hard").addEventListener("click", function () {
-    level = localStorage.setItem("maxWords", 7)
+    level = localStorage.setItem("maxWords", 6)
     location.reload();
 });
 
 
 //word database
-const wordList = ['clase', 'día','josé','júlio'];
+const wordList = ['hecho','ayer','olla','hache','abeja','vuela','queso','había','día','hubo','aparte','época','etéreo','juego','escuela','literatura','matemáticas','lengua','geografía','batería','escultura','dormía','comía','tractor','perro','gato','ardilla','rata','oso','ogro','orca','oveja','feliz','desayuno','almuerzo','merienda','cena','balón','bicicleta','vestuario','maquillaje','prueba','quizás','escenario','escoger','fragmento','diálogo','guión','magnífico','elogiar','difícil','avión','también','prohibido','líder','cebolla','joya','arqueólogo','yuca','rayo','yate','semilla','apellido','araña','bocadillo','anillo','mejilla','calle','aquella','cuchillo','abdomen','abreviatura','absorber','acceso','actitud','adviento','ágil','ahorrar','ajedrez','bahía','playa','baúl'];
 
 const words = [];
 let score = 0;
