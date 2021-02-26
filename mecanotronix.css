@@ -60,6 +60,15 @@ body{
     font-weight:bold;
 }
 
+#stage{
+    position:absolute;
+    top:10px;
+    left:10px;
+    color: tomato;
+    font-size: 40px;
+    font-weight:bold;
+}
+
 .stars {
     position: absolute;
     display: block;
