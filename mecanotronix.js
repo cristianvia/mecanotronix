@@ -25,7 +25,7 @@ document.getElementById("hard").addEventListener("click", function () {
 
 
 //word database
-const wordList = ['hecho','ayer','olla','hache','abeja','vuela','queso','había','día','hubo','aparte','época','etéreo','juego','escuela','literatura','matemáticas','lengua','geografía','batería','escultura','dormía','comía','tractor','perro','gato','ardilla','rata','oso','ogro','orca','oveja','feliz','desayuno','almuerzo','merienda','cena','balón','bicicleta','vestuario','maquillaje','prueba','quizás','escenario','escoger','fragmento','diálogo','guión','magnífico','elogiar','difícil','avión','también','prohibido','líder','cebolla','joya','arqueólogo','yuca','rayo','yate','semilla','apellido','araña','bocadillo','anillo','mejilla','calle','aquella','cuchillo','abdomen','abreviatura','absorber','acceso','actitud','adviento','ágil','ahorrar','ajedrez','bahía','playa','baúl'];
+const wordList = ['hecho', 'ayer', 'olla', 'hache', 'abeja', 'vuela', 'queso', 'había', 'día', 'hubo', 'aparte', 'época', 'etéreo', 'juego', 'escuela', 'literatura', 'matemáticas', 'lengua', 'geografía', 'batería', 'escultura', 'dormía', 'comía', 'tractor', 'perro', 'gato', 'ardilla', 'rata', 'oso', 'ogro', 'orca', 'oveja', 'feliz', 'desayuno', 'almuerzo', 'merienda', 'cena', 'balón', 'bicicleta', 'vestuario', 'maquillaje', 'prueba', 'quizás', 'escenario', 'escoger', 'fragmento', 'diálogo', 'guión', 'magnífico', 'elogiar', 'difícil', 'avión', 'también', 'prohibido', 'líder', 'cebolla', 'joya', 'arqueólogo', 'yuca', 'rayo', 'yate', 'semilla', 'apellido', 'araña', 'bocadillo', 'anillo', 'mejilla', 'calle', 'aquella', 'cuchillo', 'abdomen', 'abreviatura', 'absorber', 'acceso', 'actitud', 'adviento', 'ágil', 'ahorrar', 'ajedrez', 'bahía', 'playa', 'baúl'];
 
 const words = [];
 let score = 0;
@@ -85,7 +85,7 @@ function heroAttack(e) {
         for (let i = 0; i < words.length; i++) {
             if (words[i].letters[0] === letter) {
                 incrementScore();
-
+                setStage();
                 activeWordIndex = i;
                 words[i].damage(letter);
 
@@ -96,6 +96,7 @@ function heroAttack(e) {
     } else {
         if (words[activeWordIndex].letters[0] === letter) {
             incrementScore();
+            setStage();
             words[activeWordIndex].damage(letter);
         }
     }
@@ -105,3 +106,48 @@ function incrementScore() {
     score++;
     scoreElement.innerText = score;
 }
+
+var stage = 0;
+let stageElement = document.getElementById("stage");
+
+function setStage() {
+    let score = scoreElement.innerText
+    if (score < 100) {
+        stageElement.innerText = 'Nivel ' + 1;
+    }
+    if (score > 100 && score < 200) {
+        stageElement.innerText = 'Nivel ' + 2;
+    } else if (score > 200 && score < 300) {
+        stageElement.innerText = 'Nivel ' + 3;
+    } else if (score > 300 && score < 400) {
+        stageElement.innerText = 'Nivel ' + 4;
+    } else if (score > 400 && score < 500) {
+        stageElement.innerText = 'Nivel ' + 5;
+    } else if (score > 500 && score < 600) {
+        stageElement.innerText = 'Nivel ' + 6;
+    } else if (score > 600 && score < 700) {
+        stageElement.innerText = 'Nivel ' + 7;
+    } else if (score > 700 && score < 800) {
+        stageElement.innerText = 'Nivel ' + 8;
+    } else if (score > 800 && score < 900) {
+        stageElement.innerText = 'Nivel ' + 9;
+    } else if (score > 900 && score < 999) {
+        stageElement.innerText = 'Nivel ' + 10;
+    }
+    else if (score > 100) {
+        //stop other words
+        for (let i = 0; i < words.length; i++) {
+            //stop every word animation
+            words[i].stop();
+        }
+
+        //animations need time to stop
+        setTimeout(function () {
+            document.getElementById("gameOver").style.display = "block"
+            document.getElementById("resetBtn").style.display = "block"
+            document.getElementById("gameOverText").innerText = `¡Has GANADO! ` + `🥇` + `\n` + `Puntuación: ${score}` + `\n` + `¿Volver a empezar?` + `\n`
+        }, 10);
+    }
+}
+
+setStage();
