@@ -4,22 +4,22 @@ import helper from './helper.js';
 //Set difficulty. First time it won't show anything until you choose the difficulty button
 var level = localStorage.getItem("maxWords")
 if (level == null) {
-    level = localStorage.setItem("maxWords", 3)
+    level = localStorage.setItem("maxWords", 2)
 }
 
 const maxWordCount = level; //maximum word count attacking
 
 //Menu Selector
 document.getElementById("easy").addEventListener("click", function () {
-    level = localStorage.setItem("maxWords", 3)
+    level = localStorage.setItem("maxWords", 2)
     location.reload();
 });
 document.getElementById("normal").addEventListener("click", function () {
-    level = localStorage.setItem("maxWords", 4)
+    level = localStorage.setItem("maxWords", 3)
     location.reload();
 });
 document.getElementById("hard").addEventListener("click", function () {
-    level = localStorage.setItem("maxWords", 6)
+    level = localStorage.setItem("maxWords", 5)
     location.reload();
 });
 
