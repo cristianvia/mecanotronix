@@ -134,7 +134,7 @@ function setStage() {
     } else if (score > 900 && score < 999) {
         stageElement.innerText = 'Nivel ' + 10;
     }
-    else if (score > 100) {
+    else if (score > 1000) {
         //stop other words
         for (let i = 0; i < words.length; i++) {
             //stop every word animation
